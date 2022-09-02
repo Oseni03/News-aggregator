@@ -1,0 +1,13 @@
+<h2 class="title">Latest news</h2>
+<a class="more" href="#">more</a>
+{% for item in news %}
+<div class="single_cat_left_content floatleft">
+  <h3><a href="{{item.url}}">{{item.title}}</a></h></h3>
+  {% if item.source_url %}
+  <p class="single_cat_left_content_meta"><a href="{{item.source_url}}"><span>{{item.source}}</span></a> |  {{item.time}}</p>
+  {% else %}
+  <p class="single_cat_left_content_meta"><span>{{item.source}}</span> |  {{item.time}}</p>
+  {% endif %}
+</div>
+{% endfor %}
+</div>
