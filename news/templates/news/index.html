@@ -1,60 +1,137 @@
-{% extends "base.html" %} {% load static %} {% load django_htmx %} 
+{% extends "base.html" %}
+{% load static %} {% load django_htmx %}
+
 {% block content %}
-<main class="container">
-  <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
-    <div class="col-md-6 px-0">
-      <h1 class="display-4 fst-italic">Title of a longer featured blog post</h1>
-      <p class="blog-post-meta"><a href="#">source</a> . time</p>
-      <p class="lead my-3">
-        Multiple lines of text that form the lede, informing new readers quickly
-        and efficiently about what’s most interesting in this post’s contents.
-      </p>
-      <p class="lead mb-0">
-        <a href="#" class="text-white fw-bold">Continue reading...</a>
-      </p>
+  <div class="center">
+    <div class="header_area">
+      <div class="logo floatleft"><a href="#"><img src="{% static "images/logo.png" %}" alt="" /></a></div>
+      <div class="social_plus_search floatright">
+        <div class="search">
+          <form action="#" method="post" id="search_form">
+            <input type="text" value="Search news" id="s" />
+            <input type="submit" id="searchform" value="search" />
+            <input type="hidden" value="post" name="post_type" />
+          </form>
+        </div>
+      </div>
     </div>
-  </div>
-
-  <div class="row">
-    <div class="container-fluid">
-      <h3 class="pb-4 mb-4 fst-italic border-bottom">Latest News</h3>
-
-
-      {% for item in news %}
-      <article class="blog-post">
-        <div class="card mb-3" style="max-width: 540px">
-          <div class="row no-gutters">
-            <div class="col-md-4">
-              <img src="{{ item.image }}" alt="..." />
+    <div class="main_menu_area">
+      <ul id="nav">
+        <li><a href="#">world news</a></li>
+        <li><a href="#">sports</a></li>
+        <li><a href="#">tech</a></li>
+        <li><a href="#">business</a></li>
+        <li><a href="#">Movies</a></li>
+        <li><a href="#">entertainment</a></li>
+        <li><a href="#">culture</a></li>
+        <li><a href="#">Books</a></li>
+        <li><a href="#">classifieds</a></li>
+        <li><a href="#">blogs</a></li>
+      </ul>
+    </div>
+    <div class="slider_area">
+      <div class="slider">
+        <ul class="bxslider">
+          <li><img src="{% static "images/1.jpg" %}" alt="" title="Slider caption text" /></li>
+          <li><img src="{% static "images/2.jpg" %}" alt="" title="Slider caption text" /></li>
+          <li><img src="{% static "images/3.jpg" %}" alt="" title="Slider caption text" /></li>
+        </ul>
+      </div>
+    </div>
+    <div class="content_area">
+      <div class="main_content floatleft">
+        <div class="left_coloum floatleft">
+          <div class="single_left_coloum_wrapper single_cat_left">
+            <h2 class="title">Latest news</h2>
+            <a class="more" href="#">more</a>
+            {% for item in news %}
+            <div class="single_cat_left_content floatleft">
+              <h3><a href="{{item.url}}">{{item.title}}</a></h></h3>
+              {% if item.source_url %}
+              <p class="single_cat_left_content_meta"><a href="{{item.source_url}}"><span>{{item.source}}</span></a> |  {{item.time}}</p>
+              {% else %}
+              <p class="single_cat_left_content_meta"><span>{{item.source}}</span> |  {{item.time}}</p>
+              {% endif %}
             </div>
-            <div class="col-md-8">
-              <div class="card-body">
-                <h5 class="card-title">{{ item.title }}</h5>
-                <p class="blog-post-meta">
-                  {% if item.source_url %}
-                  <a href="{{ item.source_url }}">{{ item.source }}</source</a> . {{ item.time }}</p>
-                  {% else %}
-                  <a href="">source</a> . time</p>
-                  {% endif %}
-                <p class="card-text">
-                  This is a wider card with supporting text below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
-                </p>
-                <ul>
-                  <li>First list item</li>
-                  <li>Second list item with a longer description</li>
-                  <li>Third list item to close it out</li>
-                </ul>
-
-                <a href="{{ item.url }}" class="stretched-link">Continue reading</a>
-              </div>
+            {% endfor %}
             </div>
           </div>
         </div>
-      </article>
-      {% endfor %}
+      </div>
+      <div class="sidebar floatright">
+        <div class="single_sidebar">
+          <div class="news-letter">
+            <h2>Sign Up for Newsletter</h2>
+            <p>Sign up to receive our free newsletters!</p>
+            <form action="#" method="post">
+              <input type="text" value="Name" id="name" />
+              <input type="text" value="Email Address" id="email" />
+              <input type="submit" value="SUBMIT" id="form-submit" />
+            </form>
+            <p class="news-letter-privacy">We do not spam. We value your privacy!</p>
+          </div>
+        </div>
+        <div class="single_sidebar">
+          <div class="popular">
+            <h2 class="title">Popular</h2>
+            <ul>
+              <li>
+                <div class="single_popular">
+                  <p>Sept 24th 2045</p>
+                  <h3>Lorem ipsum dolor sit amet conse ctetur adipiscing elit <a href="#" class="readmore">Read More</a></h3>
+                </div>
+              </li>
+              <li>
+                <div class="single_popular">
+                  <p>Sept 24th 2045</p>
+                  <h3>Lorem ipsum dolor sit amet conse ctetur adipiscing elit <a href="#" class="readmore">Read More</a></h3>
+                </div>
+              </li>
+              <li>
+                <div class="single_popular">
+                  <p>Sept 24th 2045</p>
+                  <h3>Lorem ipsum dolor sit amet conse ctetur adipiscing elit <a href="#" class="readmore">Read More</a></h3>
+                </div>
+              </li>
+              <li>
+                <div class="single_popular">
+                  <p>Sept 24th 2045</p>
+                  <h3>Lorem ipsum dolor sit amet conse ctetur adipiscing elit <a href="#" class="readmore">Read More</a></h3>
+                </div>
+              </li>
+              <li>
+                <div class="single_popular">
+                  <p>Sept 24th 2045</p>
+                  <h3>Lorem ipsum dolor sit amet conse ctetur adipiscing elit <a href="#" class="readmore">Read More</a></h3>
+                </div>
+              </li>
+            </ul>
+            <a class="popular_more">more</a> </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer_top_area">
+      <div class="inner_footer_top"> <img src="{% static "images/add3.png" %}" alt="" /> </div>
+    </div>
+    <div class="footer_bottom_area">
+      <div class="footer_menu">
+        <ul id="f_menu">
+          <li><a href="#">world news</a></li>
+          <li><a href="#">sports</a></li>
+          <li><a href="#">tech</a></li>
+          <li><a href="#">business</a></li>
+          <li><a href="#">Movies</a></li>
+          <li><a href="#">entertainment</a></li>
+          <li><a href="#">culture</a></li>
+          <li><a href="#">Books</a></li>
+          <li><a href="#">classifieds</a></li>
+          <li><a href="#">blogs</a></li>
+        </ul>
+      </div>
+      <div class="copyright_text">
+        <p>Copyright &copy; 2045 The News Reporter Inc. All rights reserved | Design by <a target="_blank" rel="nofollow" href="http://www.graphicsfuel.com/2045/10/wp-magazine-theme-template-psd/">Rafi MD</a></p>
+        <p>Trade marks and images used in the design are the copyright of their respective owners and are used for demo purposes only.</p>
+      </div>
     </div>
   </div>
-</main>
 {% endblock %}

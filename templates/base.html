@@ -1,208 +1,51 @@
-<!DOCTYPE html>
-{% load static %} {% load django_htmx %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+{% load static %}
+{% load django_htmx %}
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="" />
-    <meta
-      name="author"
-      content="Mark Otto, Jacob Thornton, and Bootstrap contributors"
-    />
-    <meta name="generator" content="Hugo 0.98.0" />
-    <title>News Aggregator</title>
-
-    <link
-      rel="canonical"
-      href="https://getbootstrap.com/docs/5.2/examples/blog/"
-    />
-
-    <link href="{% static "bootstrap/css/bootstrap.min.css" %}"
-    rel="stylesheet">
-
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-
-      .b-example-divider {
-        height: 3rem;
-        background-color: rgba(0, 0, 0, 0.1);
-        border: solid rgba(0, 0, 0, 0.15);
-        border-width: 1px 0;
-        box-shadow: inset 0 0.5em 1.5em rgba(0, 0, 0, 0.1),
-          inset 0 0.125em 0.5em rgba(0, 0, 0, 0.15);
-      }
-
-      .b-example-vr {
-        flex-shrink: 0;
-        width: 1.5rem;
-        height: 100vh;
-      }
-
-      .bi {
-        vertical-align: -0.125em;
-        fill: currentColor;
-      }
-
-      .nav-scroller {
-        position: relative;
-        z-index: 2;
-        height: 2.75rem;
-        overflow-y: hidden;
-      }
-
-      .nav-scroller .nav {
-        display: flex;
-        flex-wrap: nowrap;
-        padding-bottom: 1rem;
-        margin-top: -1px;
-        overflow-x: auto;
-        text-align: center;
-        white-space: nowrap;
-        -webkit-overflow-scrolling: touch;
-      }
-    </style>
-
-    <!-- Custom styles for this template -->
-    <link
-      href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap"
-      rel="stylesheet"
-    />
-    <!-- Custom styles for this template -->
-    <link href="{% static "blog.css" %}" rel="stylesheet">
-  </head>
-  <body>
-    <div class="container">
-      <header class="blog-header lh-1 py-3">
-        <div class="row flex-nowrap justify-content-between align-items-center">
-          <div class="col-4 pt-1">
-            <!-- Button trigger modal -->
-            <a
-              type="button"
-              class="btn btn-primary"
-              data-bs-toggle="modal"
-              data-bs-target="#staticBackdrop"
-            >
-              Subscribe
-            </a>
-
-            <!-- Modal -->
-            <div
-              class="modal fade"
-              id="staticBackdrop"
-              data-bs-backdrop="static"
-              data-bs-keyboard="false"
-              tabindex="-1"
-              aria-labelledby="staticBackdropLabel"
-              aria-hidden="true"
-            >
-              <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">
-                      Newsletter
-                    </h5>
-                    <button
-                      type="button"
-                      class="btn-close"
-                      data-bs-dismiss="modal"
-                      aria-label="Close"
-                    ></button>
-                  </div>
-                  <div class="modal-body">
-                    <form action="" class="form-group">
-                      <label for="email">Enter your email</label>
-                      <br />
-                      <input
-                        id="email"
-                        type="email"
-                        placeholder="Email"
-                        class="form-control"
-                      />
-                      <br>
-                      <button type="submit" class="btn btn-primary">
-                        Submit
-                      </button>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-4 text-center">
-            <a class="blog-header-logo text-dark" href="/">News Aggregator</a>
-          </div>
-          <div class="col-4 d-flex justify-content-end align-items-center">
-            <a class="link-secondary" href="#" aria-label="Search">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                class="mx-3"
-                role="img"
-                viewBox="0 0 24 24"
-              >
-                <title>Search</title>
-                <circle cx="10.5" cy="10.5" r="7.5" />
-                <path d="M21 21l-5.2-5.2" />
-              </svg>
-            </a>
-          </div>
-        </div>
-      </header>
-
-      <div class="nav-scroller py-1 mb-2">
-        <nav class="nav d-flex justify-content-between">
-          <a class="p-2 link-secondary" href="#">World</a>
-          <a class="p-2 link-secondary" href="#">U.S.</a>
-          <a class="p-2 link-secondary" href="#">Technology</a>
-          <a class="p-2 link-secondary" href="#">Design</a>
-          <a class="p-2 link-secondary" href="#">Culture</a>
-          <a class="p-2 link-secondary" href="#">Business</a>
-          <a class="p-2 link-secondary" href="#">Politics</a>
-          <a class="p-2 link-secondary" href="#">Opinion</a>
-          <a class="p-2 link-secondary" href="#">Science</a>
-          <a class="p-2 link-secondary" href="#">Health</a>
-          <a class="p-2 link-secondary" href="#">Style</a>
-          <a class="p-2 link-secondary" href="#">Travel</a>
-        </nav>
-      </div>
-    </div>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>The News Reporter</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" type="text/css" href="{% static "assets/font/font-awesome.min.css" %}" />
+<link rel="stylesheet" type="text/css" href="{% static "assets/font/font.css" %}" />
+<link rel="stylesheet" type="text/css" href="{% static "assets/css/bootstrap.min.css" %}" media="screen" />
+<link rel="stylesheet" type="text/css" href="{% static "assets/css/style.css" %}" media="screen" />
+<link rel="stylesheet" type="text/css" href="{% static "assets/css/responsive.css" %}" media="screen" />
+<link rel="stylesheet" type="text/css" href="{% static "assets/css/jquery.bxslider.css" %}" media="screen" />
+</head>
+<body>
+  <div class="body_wrapper">
 
     {% block content %} {% endblock %}
 
-    <footer class="blog-footer">
-      <p>
-        Blog template built for
-        <a href="https://getbootstrap.com/">Bootstrap</a> by
-        <a href="https://twitter.com/mdo">@mdo</a>.
-      </p>
-      <p>
-        <a href="#">Back to top</a>
-      </p>
-    </footer>
-
-    <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'htmx/htmx.min.js' %}"></script>
-    <script src="{% static 'htmx/django-htmx.js' %}"></script>
-    <script src="{% static 'htmx/hyperscript.js' %}"></script>
-  </body>
+  </div>
+  <script type="text/javascript" src="{% static "assets/js/jquery-min.js" %}"></script> 
+  <script type="text/javascript" src="{% static "assets/js/bootstrap.min.js" %}"></script> 
+  <script type="text/javascript" src="{% static "assets/js/jquery.bxslider.js" %}"></script> 
+  <script type="text/javascript" src="{% static "assets/js/selectnav.min.js" %}"></script> 
+  
+  <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'htmx/htmx.min.js' %}"></script>
+  <script src="{% static 'htmx/django-htmx.js' %}"></script>
+  <script src="{% static 'htmx/hyperscript.js' %}"></script>
+  
+  <script type="text/javascript">
+  selectnav('nav', {
+      label: '-Navigation-',
+      nested: true,
+      indent: '-'
+  });
+  selectnav('f_menu', {
+      label: '-Navigation-',
+      nested: true,
+      indent: '-'
+  });
+  $('.bxslider').bxSlider({
+      mode: 'fade',
+      captions: true
+  });
+  </script>
+</body>
 </html>
