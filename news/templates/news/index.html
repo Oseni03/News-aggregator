@@ -17,18 +17,25 @@
 
   <div class="row">
     <div class="container-fluid">
-      <h3 class="pb-4 mb-4 fst-italic border-bottom">From the Firehose</h3>
+      <h3 class="pb-4 mb-4 fst-italic border-bottom">Latest News</h3>
 
+
+      {% for item in news %}
       <article class="blog-post">
         <div class="card mb-3" style="max-width: 540px">
           <div class="row no-gutters">
             <div class="col-md-4">
-              <img src="..." alt="..." />
+              <img src="{{ item.image }}" alt="..." />
             </div>
             <div class="col-md-8">
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="blog-post-meta"><a href="#">source</a> . time</p>
+                <h5 class="card-title">{{ item.title }}</h5>
+                <p class="blog-post-meta">
+                  {% if item.source_url %}
+                  <a href="{{ item.source_url }}">{{ item.source }}</source</a> . {{ item.time }}</p>
+                  {% else %}
+                  <a href="">source</a> . time</p>
+                  {% endif %}
                 <p class="card-text">
                   This is a wider card with supporting text below as a natural
                   lead-in to additional content. This content is a little bit
@@ -40,12 +47,13 @@
                   <li>Third list item to close it out</li>
                 </ul>
 
-                <a href="#" class="stretched-link">Continue reading</a>
+                <a href="{{ item.url }}" class="stretched-link">Continue reading</a>
               </div>
             </div>
           </div>
         </div>
       </article>
+      {% endfor %}
     </div>
   </div>
 </main>
