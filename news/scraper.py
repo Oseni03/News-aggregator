@@ -72,8 +72,148 @@ class Scraper:
             stories.append(story)
         return stories
     
-    def world_news(self):
-        self.base_url = "https://news.google.com/topics/CAAqKggKIiRDQkFTRlFvSUwyMHZNRGx1YlY4U0JXVnVMVWRDR2dKT1J5Z0FQAQ?hl=en-NG&gl=NG&ceid=NG%3Aen"
+    def business_news(self):
+        self.base_url = "https://news.google.com/topics/CAAqKggKIiRDQkFTRlFvSUwyMHZNRGx6TVdZU0JXVnVMVWRDR2dKT1J5Z0FQAQ?hl=en-NG&gl=NG&ceid=NG%3Aen"
+        response = requests.get(self.base_url) 
+        self.soup = BeautifulSoup(response.text, 'html.parser')
+        
+        stories = []
+        
+        articles = self.soup.find_all("article", {"jscontroller": "HyhIue"})
+        for article in articles:
+            url = article.a.get("href")
+            try:
+                image = article.find("figure").img.get("src")
+            except:
+                image = None
+            
+            try:
+                title = article.h3.text
+            except:
+                title = article.h4.text
+            source = article.div.div.a.text
+            source_url = article.div.div.a.get("href")
+            time = article.div.div.time.text        
+            
+            story = {"url": urljoin(self.base_url, url), "title": title, "image": image, 
+                    "source_url": urljoin(self.base_url, source_url), "time": time, "source": source}
+            stories.append(story)
+        return stories
+    
+    def technology_news(self):
+        self.base_url = "https://news.google.com/topics/CAAqKggKIiRDQkFTRlFvSUwyMHZNRGRqTVhZU0JXVnVMVWRDR2dKT1J5Z0FQAQ?hl=en-NG&gl=NG&ceid=NG%3Aen"
+        response = requests.get(self.base_url) 
+        self.soup = BeautifulSoup(response.text, 'html.parser')
+        
+        stories = []
+        
+        articles = self.soup.find_all("article", {"jscontroller": "HyhIue"})
+        for article in articles:
+            url = article.a.get("href")
+            try:
+                image = article.find("figure").img.get("src")
+            except:
+                image = None
+            
+            try:
+                title = article.h3.text
+            except:
+                title = article.h4.text
+            source = article.div.div.a.text
+            source_url = article.div.div.a.get("href")
+            time = article.div.div.time.text        
+            
+            story = {"url": urljoin(self.base_url, url), "title": title, "image": image, 
+                    "source_url": urljoin(self.base_url, source_url), "time": time, "source": source}
+            stories.append(story)
+        return stories
+    
+    def entertainment_news(self):
+        self.base_url = "https://news.google.com/topics/CAAqKggKIiRDQkFTRlFvSUwyMHZNREpxYW5RU0JXVnVMVWRDR2dKT1J5Z0FQAQ?hl=en-NG&gl=NG&ceid=NG%3Aen"
+        response = requests.get(self.base_url) 
+        self.soup = BeautifulSoup(response.text, 'html.parser')
+        
+        stories = []
+        
+        articles = self.soup.find_all("article", {"jscontroller": "HyhIue"})
+        for article in articles:
+            url = article.a.get("href")
+            try:
+                image = article.find("figure").img.get("src")
+            except:
+                image = None
+            
+            try:
+                title = article.h3.text
+            except:
+                title = article.h4.text
+            source = article.div.div.a.text
+            source_url = article.div.div.a.get("href")
+            time = article.div.div.time.text        
+            
+            story = {"url": urljoin(self.base_url, url), "title": title, "image": image, 
+                    "source_url": urljoin(self.base_url, source_url), "time": time, "source": source}
+            stories.append(story)
+        return stories
+    
+    def sport_news(self):
+        self.base_url = "https://news.google.com/topics/CAAqKggKIiRDQkFTRlFvSUwyMHZNRFp1ZEdvU0JXVnVMVWRDR2dKT1J5Z0FQAQ?hl=en-NG&gl=NG&ceid=NG%3Aen"
+        response = requests.get(self.base_url) 
+        self.soup = BeautifulSoup(response.text, 'html.parser')
+        
+        stories = []
+        
+        articles = self.soup.find_all("article", {"jscontroller": "HyhIue"})
+        for article in articles:
+            url = article.a.get("href")
+            try:
+                image = article.find("figure").img.get("src")
+            except:
+                image = None
+            
+            try:
+                title = article.h3.text
+            except:
+                title = article.h4.text
+            source = article.div.div.a.text
+            source_url = article.div.div.a.get("href")
+            time = article.div.div.time.text        
+            
+            story = {"url": urljoin(self.base_url, url), "title": title, "image": image, 
+                    "source_url": urljoin(self.base_url, source_url), "time": time, "source": source}
+            stories.append(story)
+        return stories
+    
+    def science_news(self):
+        self.base_url = "https://news.google.com/topics/CAAqKggKIiRDQkFTRlFvSUwyMHZNRFp0Y1RjU0JXVnVMVWRDR2dKT1J5Z0FQAQ?hl=en-NG&gl=NG&ceid=NG%3Aen"
+        response = requests.get(self.base_url) 
+        self.soup = BeautifulSoup(response.text, 'html.parser')
+        
+        stories = []
+        
+        articles = self.soup.find_all("article", {"jscontroller": "HyhIue"})
+        for article in articles:
+            url = article.a.get("href")
+            try:
+                image = article.find("figure").img.get("src")
+            except:
+                image = None
+            
+            try:
+                title = article.h3.text
+            except:
+                title = article.h4.text
+            source = article.div.div.a.text
+            source_url = article.div.div.a.get("href")
+            time = article.div.div.time.text        
+            
+            story = {"url": urljoin(self.base_url, url), "title": title, "image": image, 
+                    "source_url": urljoin(self.base_url, source_url), "time": time, "source": source}
+            stories.append(story)
+        return stories
+    
+    def health_news(self):
+        self.base_url = "https://news.google.com/topics/CAAqJQgKIh9DQkFTRVFvSUwyMHZNR3QwTlRFU0JXVnVMVWRDS0FBUAE?hl=en-NG&gl=NG&ceid=NG%3Aen"
         response = requests.get(self.base_url) 
         self.soup = BeautifulSoup(response.text, 'html.parser')
         
@@ -110,7 +250,7 @@ if __name__ == "__main__":
     #     new = Category.objects.create(title=category.title, url=category.url)
     #     new.save()
     
-    news = scraper.world_news()
+    news = scraper.health_news()
     print(news)
     
     

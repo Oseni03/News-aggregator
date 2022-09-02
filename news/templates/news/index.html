@@ -16,10 +16,13 @@
       </div>
     </div>
     <div class="main_menu_area">
-      <ul id="nav">
-        {% for category in categories %}
-        <li><a href="{{category.url}}">{{category.title}}</a></li>
-        {% endfor %}
+      <ul id="nav" hx-boost="true" hx-target="#news_list">
+        <li><a href="{% url "world" %}">World</a></li>
+        <li><a href="{% url "business" %}">Business</a></li>
+        <li><a href="{% url "technology" %}">Technology</a></li>
+        <li><a href="{% url "entertainment" %}">Entertainment</a></li>
+        <li><a href="{% url "sport" %}">Sport</a></li>
+        <li><a href="{% url "health" %}">Health</a></li>
       </ul>
     </div>
     <div class="slider_area">
@@ -34,7 +37,7 @@
     <div class="content_area">
       <div class="main_content floatleft">
         <div class="left_coloum floatleft">
-          <div class="single_left_coloum_wrapper single_cat_left" hx-get="{% url 'home' %}" hx-trigger="every 60s" hx-swap="innerHTML">
+          <div class="single_left_coloum_wrapper single_cat_left" hx-get="{% url 'home' %}" hx-trigger="every 60s" hx-swap="innerHTML" id="news_list">
             {% include "news/partials/news_list.html" %}
           </div>
         </div>
