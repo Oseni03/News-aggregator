@@ -17,16 +17,9 @@
     </div>
     <div class="main_menu_area">
       <ul id="nav">
-        <li><a href="#">world news</a></li>
-        <li><a href="#">sports</a></li>
-        <li><a href="#">tech</a></li>
-        <li><a href="#">business</a></li>
-        <li><a href="#">Movies</a></li>
-        <li><a href="#">entertainment</a></li>
-        <li><a href="#">culture</a></li>
-        <li><a href="#">Books</a></li>
-        <li><a href="#">classifieds</a></li>
-        <li><a href="#">blogs</a></li>
+        {% for category in categories %}
+        <li><a href="{{category.url}}">{{category.title}}</a></li>
+        {% endfor %}
       </ul>
     </div>
     <div class="slider_area">
