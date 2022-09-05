@@ -5,11 +5,11 @@ import django_heroku
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = os.environ.get("PORTAL_SECRET_KEY")
+SECRET_KEY = os.environ.get("NEWS_SECRET_KEY")
 
 DEBUG = (os.environ.get("DEBUG_VALUE") == "True")
 
-ALLOWED_HOSTS = ["localhost", ""]
+ALLOWED_HOSTS = ["127.0.0.1:8000", ""]
 
 
 INSTALLED_APPS = [
