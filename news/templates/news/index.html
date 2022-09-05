@@ -7,7 +7,7 @@
       <div class="logo floatleft"><a href="#"><img src="{% static "images/logo.png" %}" alt="" /></a></div>
     </div>
     <div class="main_menu_area">
-      <ul id="nav" hx-swap="innerHTML" hx-target="#news_list" hx-indicator="#spinner">
+      <ul id="nav" hx-swap="innerHTML" hx-target="#news_list" hx-indicator="#indicator">
         <li><a hx-get="{% url "world" %}">World</a></li>
         <li><a hx-get="{% url "business" %}">Business</a></li>
         <li><a hx-get="{% url "technology" %}">Technology</a></li>
@@ -27,7 +27,10 @@
     </div>
     <div class="content_area">
         <div class="">
-          <div class="single_left_coloum_wrapper single_cat_left" hx-get="{% url 'home' %}" hx-trigger="every 60s" hx-swap="innerHTML" id="news_list" hx-indicator="#spinner">
+          <div class="single_left_coloum_wrapper single_cat_left" 
+            hx-get="{% url 'home' %}" hx-trigger="every 60s" 
+            hx-swap="innerHTML" id="news_list" 
+            hx-indicator="#indicator">
             {% include "news/partials/news_list.html" %}
           </div>
         </div>
@@ -38,31 +41,14 @@
       <div class="inner_footer_top"> <img src="{% static "images/add3.png" %}" alt="" /> </div>
     </div>
     <div class="footer_bottom_area">
-      <div class="footer_menu">
-        <ul id="f_menu">
-          <li><a href="#">world news</a></li>
-          <li><a href="#">sports</a></li>
-          <li><a href="#">tech</a></li>
-          <li><a href="#">business</a></li>
-          <li><a href="#">Movies</a></li>
-          <li><a href="#">entertainment</a></li>
-          <li><a href="#">culture</a></li>
-          <li><a href="#">Books</a></li>
-          <li><a href="#">classifieds</a></li>
-          <li><a href="#">blogs</a></li>
-        </ul>
-      </div>
       <div class="copyright_text">
         <p>Copyright &copy; 2045 The News Reporter Inc. All rights reserved | Design by <a target="_blank" rel="nofollow" href="http://www.graphicsfuel.com/2045/10/wp-magazine-theme-template-psd/">Rafi MD</a></p>
         <p>Trade marks and images used in the design are the copyright of their respective owners and are used for demo purposes only.</p>
       </div>
     </div>
   </div>
-  <div id="spinner" class="htmx-indicator">
-    <div class="d-flex justify-content-center" >
-      <div class="spinner-border" role="status">
-        <span class="sr-only">Loading...</span>
-      </div>
-    </div>
+  
+  <div class="d-flex justify-content-center">
+    <div class="spinner-border htmx-indicator" id="indicator"></div>
   </div>
 {% endblock %}

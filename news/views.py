@@ -18,18 +18,25 @@ class HomeView(generic.TemplateView):
     scraper = Scraper()
     context = super(HomeView, self).get_context_data(*args, **kwargs)
     context["news"] = scraper.latest()
+    context["type"] = "Latest"
     return context
 
 
 def world(request):
       scraper = Scraper()
-      context = {"news": scraper.world_news()}
+      context = {
+            "news": scraper.world_news(),
+            "type": "World",
+            }
       return render(request, "news/partials/news_list.html", context)
 
 
 def business(request):
       scraper = Scraper()
-      context = {"news": scraper.business_news()}
+      context = {
+            "news": scraper.business_news(),
+            "type": "Business"
+                 }
       return render(request, "news/partials/news_list.html", context)
 
 

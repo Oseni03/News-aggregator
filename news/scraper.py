@@ -36,8 +36,23 @@ class Scraper:
     def latest(self):
         stories = []
         articles = self.soup.find_all("article", {"jscontroller": "HyhIue"})
-        with ThreadPoolExecutor(max_workers=2) as executor:
-            story = executor.map(self.get_single, articles)
+        for article in articles:
+            url = article.a.get("href")
+            try:
+                image = article.find("figure").img.get("src")
+            except:
+                image = None
+            
+            try:
+                title = article.h3.text
+            except:
+                title = article.h4.text
+            source = article.div.div.a.text
+            source_url = article.div.div.a.get("href")
+            time = article.div.div.time.text        
+            
+            story = {"url": urljoin(self.base_url, url), "title": title, "image": image, 
+                    "source_url": urljoin(self.base_url, source_url), "time": time, "source": source}
             stories.append(story)
         return stories
     
@@ -59,8 +74,23 @@ class Scraper:
         stories = []
         
         articles = self.soup.find_all("article", {"jscontroller": "HyhIue"})
-        with ThreadPoolExecutor() as executor:
-            story = executor.map(self.get_single, articles)
+        for article in articles:
+            url = article.a.get("href")
+            try:
+                image = article.find("figure").img.get("src")
+            except:
+                image = None
+            
+            try:
+                title = article.h3.text
+            except:
+                title = article.h4.text
+            source = article.div.div.a.text
+            source_url = article.div.div.a.get("href")
+            time = article.div.div.time.text        
+            
+            story = {"url": urljoin(self.base_url, url), "title": title, "image": image, 
+                    "source_url": urljoin(self.base_url, source_url), "time": time, "source": source}
             stories.append(story)
         return stories
     
@@ -72,8 +102,23 @@ class Scraper:
         stories = []
         
         articles = self.soup.find_all("article", {"jscontroller": "HyhIue"})
-        with ThreadPoolExecutor() as executor:
-            story = executor.map(self.get_single, articles)
+        for article in articles:
+            url = article.a.get("href")
+            try:
+                image = article.find("figure").img.get("src")
+            except:
+                image = None
+            
+            try:
+                title = article.h3.text
+            except:
+                title = article.h4.text
+            source = article.div.div.a.text
+            source_url = article.div.div.a.get("href")
+            time = article.div.div.time.text        
+            
+            story = {"url": urljoin(self.base_url, url), "title": title, "image": image, 
+                    "source_url": urljoin(self.base_url, source_url), "time": time, "source": source}
             stories.append(story)
         return stories
     
@@ -85,8 +130,23 @@ class Scraper:
         stories = []
         
         articles = self.soup.find_all("article", {"jscontroller": "HyhIue"})
-        with ThreadPoolExecutor() as executor:
-            story = executor.map(self.get_single, articles)
+        for article in articles:
+            url = article.a.get("href")
+            try:
+                image = article.find("figure").img.get("src")
+            except:
+                image = None
+            
+            try:
+                title = article.h3.text
+            except:
+                title = article.h4.text
+            source = article.div.div.a.text
+            source_url = article.div.div.a.get("href")
+            time = article.div.div.time.text        
+            
+            story = {"url": urljoin(self.base_url, url), "title": title, "image": image, 
+                    "source_url": urljoin(self.base_url, source_url), "time": time, "source": source}
             stories.append(story)
         return stories
     
@@ -98,8 +158,23 @@ class Scraper:
         stories = []
         
         articles = self.soup.find_all("article", {"jscontroller": "HyhIue"})
-        with ThreadPoolExecutor() as executor:
-            story = executor.map(self.get_single, articles)
+        for article in articles:
+            url = article.a.get("href")
+            try:
+                image = article.find("figure").img.get("src")
+            except:
+                image = None
+            
+            try:
+                title = article.h3.text
+            except:
+                title = article.h4.text
+            source = article.div.div.a.text
+            source_url = article.div.div.a.get("href")
+            time = article.div.div.time.text        
+            
+            story = {"url": urljoin(self.base_url, url), "title": title, "image": image, 
+                    "source_url": urljoin(self.base_url, source_url), "time": time, "source": source}
             stories.append(story)
         return stories
     
@@ -111,8 +186,23 @@ class Scraper:
         stories = []
         
         articles = self.soup.find_all("article", {"jscontroller": "HyhIue"})
-        with ThreadPoolExecutor() as executor:
-            story = executor.map(self.get_single, articles)
+        for article in articles:
+            url = article.a.get("href")
+            try:
+                image = article.find("figure").img.get("src")
+            except:
+                image = None
+            
+            try:
+                title = article.h3.text
+            except:
+                title = article.h4.text
+            source = article.div.div.a.text
+            source_url = article.div.div.a.get("href")
+            time = article.div.div.time.text        
+            
+            story = {"url": urljoin(self.base_url, url), "title": title, "image": image, 
+                    "source_url": urljoin(self.base_url, source_url), "time": time, "source": source}
             stories.append(story)
         return stories
     
@@ -124,8 +214,23 @@ class Scraper:
         stories = []
         
         articles = self.soup.find_all("article", {"jscontroller": "HyhIue"})
-        with ThreadPoolExecutor() as executor:
-            story = executor.map(self.get_single, articles)
+        for article in articles:
+            url = article.a.get("href")
+            try:
+                image = article.find("figure").img.get("src")
+            except:
+                image = None
+            
+            try:
+                title = article.h3.text
+            except:
+                title = article.h4.text
+            source = article.div.div.a.text
+            source_url = article.div.div.a.get("href")
+            time = article.div.div.time.text        
+            
+            story = {"url": urljoin(self.base_url, url), "title": title, "image": image, 
+                    "source_url": urljoin(self.base_url, source_url), "time": time, "source": source}
             stories.append(story)
         return stories
     
@@ -137,8 +242,23 @@ class Scraper:
         stories = []
         
         articles = self.soup.find_all("article", {"jscontroller": "HyhIue"})
-        with ThreadPoolExecutor() as executor:
-            story = executor.map(self.get_single, articles)
+        for article in articles:
+            url = article.a.get("href")
+            try:
+                image = article.find("figure").img.get("src")
+            except:
+                image = None
+            
+            try:
+                title = article.h3.text
+            except:
+                title = article.h4.text
+            source = article.div.div.a.text
+            source_url = article.div.div.a.get("href")
+            time = article.div.div.time.text        
+            
+            story = {"url": urljoin(self.base_url, url), "title": title, "image": image, 
+                    "source_url": urljoin(self.base_url, source_url), "time": time, "source": source}
             stories.append(story)
         return stories
 
