@@ -5,24 +5,15 @@
   <div class="center">
     <div class="header_area">
       <div class="logo floatleft"><a href="#"><img src="{% static "images/logo.png" %}" alt="" /></a></div>
-      <div class="social_plus_search floatright">
-        <div class="search">
-          <form action="#" method="post" id="search_form">
-            <input type="text" value="Search news" id="s" />
-            <input type="submit" id="searchform" value="search" />
-            <input type="hidden" value="post" name="post_type" />
-          </form>
-        </div>
-      </div>
     </div>
     <div class="main_menu_area">
-      <ul id="nav" hx-boost="true" hx-target="#news_list">
-        <li><a href="{% url "world" %}">World</a></li>
-        <li><a href="{% url "business" %}">Business</a></li>
-        <li><a href="{% url "technology" %}">Technology</a></li>
-        <li><a href="{% url "entertainment" %}">Entertainment</a></li>
-        <li><a href="{% url "sport" %}">Sport</a></li>
-        <li><a href="{% url "health" %}">Health</a></li>
+      <ul id="nav" hx-swap="innerHTML" hx-target="#news_list" hx-indicator="#spinner">
+        <li><a hx-get="{% url "world" %}">World</a></li>
+        <li><a hx-get="{% url "business" %}">Business</a></li>
+        <li><a hx-get="{% url "technology" %}">Technology</a></li>
+        <li><a hx-get="{% url "entertainment" %}">Entertainment</a></li>
+        <li><a hx-get="{% url "sport" %}">Sport</a></li>
+        <li><a hx-get="{% url "health" %}">Health</a></li>
       </ul>
     </div>
     <div class="slider_area">
@@ -35,64 +26,13 @@
       </div>
     </div>
     <div class="content_area">
-      <div class="main_content floatleft">
-        <div class="left_coloum floatleft">
-          <div class="single_left_coloum_wrapper single_cat_left" hx-get="{% url 'home' %}" hx-trigger="every 60s" hx-swap="innerHTML" id="news_list">
+        <div class="">
+          <div class="single_left_coloum_wrapper single_cat_left" hx-get="{% url 'home' %}" hx-trigger="every 60s" hx-swap="innerHTML" id="news_list" hx-indicator="#spinner">
             {% include "news/partials/news_list.html" %}
           </div>
         </div>
-      </div>
-      <div class="sidebar floatright">
-        <div class="single_sidebar">
-          <div class="news-letter">
-            <h2>Sign Up for Newsletter</h2>
-            <p>Sign up to receive our free newsletters!</p>
-            <form action="#" method="post">
-              <input type="text" value="Name" id="name" />
-              <input type="text" value="Email Address" id="email" />
-              <input type="submit" value="SUBMIT" id="form-submit" />
-            </form>
-            <p class="news-letter-privacy">We do not spam. We value your privacy!</p>
-          </div>
-        </div>
-        <div class="single_sidebar">
-          <div class="popular">
-            <h2 class="title">Popular</h2>
-            <ul>
-              <li>
-                <div class="single_popular">
-                  <p>Sept 24th 2045</p>
-                  <h3>Lorem ipsum dolor sit amet conse ctetur adipiscing elit <a href="#" class="readmore">Read More</a></h3>
-                </div>
-              </li>
-              <li>
-                <div class="single_popular">
-                  <p>Sept 24th 2045</p>
-                  <h3>Lorem ipsum dolor sit amet conse ctetur adipiscing elit <a href="#" class="readmore">Read More</a></h3>
-                </div>
-              </li>
-              <li>
-                <div class="single_popular">
-                  <p>Sept 24th 2045</p>
-                  <h3>Lorem ipsum dolor sit amet conse ctetur adipiscing elit <a href="#" class="readmore">Read More</a></h3>
-                </div>
-              </li>
-              <li>
-                <div class="single_popular">
-                  <p>Sept 24th 2045</p>
-                  <h3>Lorem ipsum dolor sit amet conse ctetur adipiscing elit <a href="#" class="readmore">Read More</a></h3>
-                </div>
-              </li>
-              <li>
-                <div class="single_popular">
-                  <p>Sept 24th 2045</p>
-                  <h3>Lorem ipsum dolor sit amet conse ctetur adipiscing elit <a href="#" class="readmore">Read More</a></h3>
-                </div>
-              </li>
-            </ul>
-            <a class="popular_more">more</a> </div>
-        </div>
-      </div>
+      
+      
     </div>
     <div class="footer_top_area">
       <div class="inner_footer_top"> <img src="{% static "images/add3.png" %}" alt="" /> </div>
@@ -115,6 +55,13 @@
       <div class="copyright_text">
         <p>Copyright &copy; 2045 The News Reporter Inc. All rights reserved | Design by <a target="_blank" rel="nofollow" href="http://www.graphicsfuel.com/2045/10/wp-magazine-theme-template-psd/">Rafi MD</a></p>
         <p>Trade marks and images used in the design are the copyright of their respective owners and are used for demo purposes only.</p>
+      </div>
+    </div>
+  </div>
+  <div id="spinner" class="htmx-indicator">
+    <div class="d-flex justify-content-center" >
+      <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
       </div>
     </div>
   </div>

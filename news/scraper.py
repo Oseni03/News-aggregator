@@ -1,6 +1,8 @@
 import requests
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin
+from time import sleep, perf_counter
+from concurrent.futures import ThreadPoolExecutor
 
 # from .models import Category
 
@@ -10,27 +12,32 @@ class Scraper:
         response = requests.get(self.base_url) 
         self.soup = BeautifulSoup(response.text, 'html.parser')
     
+    
+    def get_single(self, article):
+        stories = []
+        url = article.a.get("href")
+        try:
+            image = article.find("figure").img.get("src")
+        except:
+            image = None
+        
+        try:
+            title = article.h3.text
+        except:
+            title = article.h4.text
+        source = article.div.div.a.text
+        source_url = article.div.div.a.get("href")
+        time = article.div.div.time.text        
+        
+        story = {"url": urljoin(self.base_url, url), "title": title, "image": image, 
+                "source_url": urljoin(self.base_url, source_url), "time": time, "source": source}
+        return stories
+    
     def latest(self):
         stories = []
-        
         articles = self.soup.find_all("article", {"jscontroller": "HyhIue"})
-        for article in articles:
-            url = article.a.get("href")
-            try:
-                image = article.find("figure").img.get("src")
-            except:
-                image = None
-            
-            try:
-                title = article.h3.text
-            except:
-                title = article.h4.text
-            source = article.div.div.a.text
-            source_url = article.div.div.a.get("href")
-            time = article.div.div.time.text        
-            
-            story = {"url": urljoin(self.base_url, url), "title": title, "image": image, 
-                    "source_url": urljoin(self.base_url, source_url), "time": time, "source": source}
+        with ThreadPoolExecutor(max_workers=2) as executor:
+            story = executor.map(self.get_single, articles)
             stories.append(story)
         return stories
     
@@ -52,23 +59,8 @@ class Scraper:
         stories = []
         
         articles = self.soup.find_all("article", {"jscontroller": "HyhIue"})
-        for article in articles:
-            url = article.a.get("href")
-            try:
-                image = article.find("figure").img.get("src")
-            except:
-                image = None
-            
-            try:
-                title = article.h3.text
-            except:
-                title = article.h4.text
-            source = article.div.div.a.text
-            source_url = article.div.div.a.get("href")
-            time = article.div.div.time.text        
-            
-            story = {"url": urljoin(self.base_url, url), "title": title, "image": image, 
-                    "source_url": urljoin(self.base_url, source_url), "time": time, "source": source}
+        with ThreadPoolExecutor() as executor:
+            story = executor.map(self.get_single, articles)
             stories.append(story)
         return stories
     
@@ -80,23 +72,8 @@ class Scraper:
         stories = []
         
         articles = self.soup.find_all("article", {"jscontroller": "HyhIue"})
-        for article in articles:
-            url = article.a.get("href")
-            try:
-                image = article.find("figure").img.get("src")
-            except:
-                image = None
-            
-            try:
-                title = article.h3.text
-            except:
-                title = article.h4.text
-            source = article.div.div.a.text
-            source_url = article.div.div.a.get("href")
-            time = article.div.div.time.text        
-            
-            story = {"url": urljoin(self.base_url, url), "title": title, "image": image, 
-                    "source_url": urljoin(self.base_url, source_url), "time": time, "source": source}
+        with ThreadPoolExecutor() as executor:
+            story = executor.map(self.get_single, articles)
             stories.append(story)
         return stories
     
@@ -108,23 +85,8 @@ class Scraper:
         stories = []
         
         articles = self.soup.find_all("article", {"jscontroller": "HyhIue"})
-        for article in articles:
-            url = article.a.get("href")
-            try:
-                image = article.find("figure").img.get("src")
-            except:
-                image = None
-            
-            try:
-                title = article.h3.text
-            except:
-                title = article.h4.text
-            source = article.div.div.a.text
-            source_url = article.div.div.a.get("href")
-            time = article.div.div.time.text        
-            
-            story = {"url": urljoin(self.base_url, url), "title": title, "image": image, 
-                    "source_url": urljoin(self.base_url, source_url), "time": time, "source": source}
+        with ThreadPoolExecutor() as executor:
+            story = executor.map(self.get_single, articles)
             stories.append(story)
         return stories
     
@@ -136,23 +98,8 @@ class Scraper:
         stories = []
         
         articles = self.soup.find_all("article", {"jscontroller": "HyhIue"})
-        for article in articles:
-            url = article.a.get("href")
-            try:
-                image = article.find("figure").img.get("src")
-            except:
-                image = None
-            
-            try:
-                title = article.h3.text
-            except:
-                title = article.h4.text
-            source = article.div.div.a.text
-            source_url = article.div.div.a.get("href")
-            time = article.div.div.time.text        
-            
-            story = {"url": urljoin(self.base_url, url), "title": title, "image": image, 
-                    "source_url": urljoin(self.base_url, source_url), "time": time, "source": source}
+        with ThreadPoolExecutor() as executor:
+            story = executor.map(self.get_single, articles)
             stories.append(story)
         return stories
     
@@ -164,23 +111,8 @@ class Scraper:
         stories = []
         
         articles = self.soup.find_all("article", {"jscontroller": "HyhIue"})
-        for article in articles:
-            url = article.a.get("href")
-            try:
-                image = article.find("figure").img.get("src")
-            except:
-                image = None
-            
-            try:
-                title = article.h3.text
-            except:
-                title = article.h4.text
-            source = article.div.div.a.text
-            source_url = article.div.div.a.get("href")
-            time = article.div.div.time.text        
-            
-            story = {"url": urljoin(self.base_url, url), "title": title, "image": image, 
-                    "source_url": urljoin(self.base_url, source_url), "time": time, "source": source}
+        with ThreadPoolExecutor() as executor:
+            story = executor.map(self.get_single, articles)
             stories.append(story)
         return stories
     
@@ -192,23 +124,8 @@ class Scraper:
         stories = []
         
         articles = self.soup.find_all("article", {"jscontroller": "HyhIue"})
-        for article in articles:
-            url = article.a.get("href")
-            try:
-                image = article.find("figure").img.get("src")
-            except:
-                image = None
-            
-            try:
-                title = article.h3.text
-            except:
-                title = article.h4.text
-            source = article.div.div.a.text
-            source_url = article.div.div.a.get("href")
-            time = article.div.div.time.text        
-            
-            story = {"url": urljoin(self.base_url, url), "title": title, "image": image, 
-                    "source_url": urljoin(self.base_url, source_url), "time": time, "source": source}
+        with ThreadPoolExecutor() as executor:
+            story = executor.map(self.get_single, articles)
             stories.append(story)
         return stories
     
@@ -220,29 +137,15 @@ class Scraper:
         stories = []
         
         articles = self.soup.find_all("article", {"jscontroller": "HyhIue"})
-        for article in articles:
-            url = article.a.get("href")
-            try:
-                image = article.find("figure").img.get("src")
-            except:
-                image = None
-            
-            try:
-                title = article.h3.text
-            except:
-                title = article.h4.text
-            source = article.div.div.a.text
-            source_url = article.div.div.a.get("href")
-            time = article.div.div.time.text        
-            
-            story = {"url": urljoin(self.base_url, url), "title": title, "image": image, 
-                    "source_url": urljoin(self.base_url, source_url), "time": time, "source": source}
+        with ThreadPoolExecutor() as executor:
+            story = executor.map(self.get_single, articles)
             stories.append(story)
         return stories
 
 
 
 if __name__ == "__main__":
+    start = perf_counter()
     scraper = Scraper()
     # categories = scraper.categories()
     
@@ -252,5 +155,7 @@ if __name__ == "__main__":
     
     news = scraper.health_news()
     print(news)
+    finish = perf_counter()
+    print(f"It took {finish-start} second(s) to finish.")
     
     

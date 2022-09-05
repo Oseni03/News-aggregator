@@ -35,29 +35,44 @@ def business(request):
 
 def technology(request):
       scraper = Scraper()
-      context = {"news": scraper.technology_news()}
+      context = {
+          "news": scraper.technology_news(),
+          "type": "Technology"
+      }
       return render(request, "news/partials/news_list.html", context)
 
 
 def entertainment(request):
       scraper = Scraper()
-      context = {"news": scraper.entertainment_news()}
+      context = {
+          "news": scraper.entertainment_news(),
+          "type": "Entertainment"
+      }
       return render(request, "news/partials/news_list.html", context)
 
 
 def sport(request):
       scraper = Scraper()
-      context = {"news": scraper.sport_news()}
+      context = {
+          "news": scraper.sport_news(),
+          "type": "Sport"
+      }
       return render(request, "news/partials/news_list.html", context)
 
 
 def science(request):
       scraper = Scraper()
-      context = {"news": scraper.science_news()}
+      context = {
+          "news": scraper.science_news(),
+          "type": "Science"
+      }
       return render(request, "news/partials/news_list.html", context)
 
 
 def health(request):
       scraper = Scraper()
-      context = {"news": scraper.health_news()}
+      context = {
+          "news": scraper.health_news(),
+          "type": Health
+      }
       return render(request, "news/partials/news_list.html", context)
