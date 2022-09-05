@@ -9,7 +9,7 @@ SECRET_KEY = os.environ.get("NEWS_SECRET_KEY")
 
 DEBUG = (os.environ.get("DEBUG_VALUE") == "True")
 
-ALLOWED_HOSTS = ["127.0.0.1:8000", ""]
+ALLOWED_HOSTS = ["127.0.0.1:8000", "update-plus.herokuapp.com"]
 
 
 INSTALLED_APPS = [
