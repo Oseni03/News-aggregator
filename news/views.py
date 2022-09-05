@@ -80,6 +80,6 @@ def health(request):
       scraper = Scraper()
       context = {
           "news": scraper.health_news(),
-          "type": Health
+          "type": "Health"
       }
       return render(request, "news/partials/news_list.html", context)
